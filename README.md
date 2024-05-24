@@ -6,3 +6,4 @@
 - Rails Query logs for sql traceability 
 - Summarizing Shapup, remote, rework, getting real
 - Asset mangemnet with importmaps
+- Add performance testing, [evil-seed](https://github.com/evilmartians/evil-seed)
