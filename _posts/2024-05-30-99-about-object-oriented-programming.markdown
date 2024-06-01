@@ -1,27 +1,51 @@
 ---
 layout: post
 title:  "About Object Oriented Programming"
-date:   2024-05-04 14:18:50 +0200
+date:   2024-05-30 14:18:50 +0200
 categories: oop
 ---
-I have been working with Object Oriented Programming for a couple of years. During this time, I have seen many concepts, approaches and principles that could be useful for programmers. This blog post aims to collect these ideas.
+
+I have been developing web applications for a while, and let me tell you, it is not easy. All projects start out simple and development is fast and joyful. But after years of development,  many project's codebase become a ball of spaghetti and mud development is not fast and joyful anymore. Fortunately we have many tools to help us prevent or remediate this issue.
+
+# Abstraction
+
+Abstractions are the classes, methods and variables we create in our programme to satisfy the requirements. These abstractions are the expression we can use to describe or domain model.
+
+Abstractions make our logic reusable, and provides the opportunity for the user to be ignorant about the implementation details. An abstractions also introduces dependencies, if we use it and it start to behave unexpectedly it breaks the code that relies on it. For this reason, defining what an abstraction should do and naming it well is crucial. 
+
+How can we create good abstractions? We have to understand the problem domain. A good starting point is to collect some questions that are important in the scope of the problem. We can go even further and describe the problem in a few sentences. This provides a context, and we can check what specific thing mean in it. 
+
+Lets see an example! We could have the following description for our application:
+
+> We have an administration system for Universities where teachers can create classes and students can join these classes.
+
+Then have the following question and answer: 
+
+> What are the teachers and users in the application? 
+> - They are the users!
+
+Voila, we found an abstraction!
+
+Another way to find abstractions is to collect specific examples for it and list them in a table. Then we only need to figure out what the missing column header should be. 
+
+|Name of a Class | **?** |
+| Calculation Theory | at least 50 point on the exam |
+| CS 101 | complete homework, at least 40 point on the exam  |
+
+> These are the **requirements** for the class!
+
+Good job! Now we have some nice methods to find abstraction. We should be critical with newly found abstraction  and check if they really name an important concept in our domain. If not, then we should try to find a better one.
+
+It is easy to go overboard on creating abstractions. Creating the wrong abstractions are a costly mistake since it is hard to remove an abstraction after some parts of the code started to depend on it. To avoid this problem, try to introduce abstractions as late as possible. This way you have the chance to see more specific examples for the abstraction and have more knowledge about the problem. Sometimes abstractions that are obvious now, will turn out to be misleading when some new examples are revealed.
+
+# Code smells 
+# SOLID principles
+# Refactoring
+# Test
 
 # 99 Bottles of OOP
 
-- abstraction is a tool, prepares for future change, but adds indirection which makes the code harder to understand
-- What does this thing mean in the context?
-    - What is a beer in the context of thr 99 bottles song? - It is a thing you drink, a beverage
-- Does the code indicates the core concepts, challenges that it solves?
-- Collect questions a bout the domain, write some business description about the problem
--  be careful with red herrings (obvious abstractions), they can be misleading
--  introducing an abstraction too early can prevent finding meaningful abstractions
-    - wait as long as you can, you will have more information to create clear abstractions
-- check if the abstraction is meaningful in the context
-- when creating public API-s, consider how much knowledge is needed to call a method (parameters)
-- - method names should be only one level higher than the concrete code
-- create a table with the inputs and the the output, find a column, category name (what would the column name be?)
-    - imagine more concrete examples to help you find a good method name
-- don't use the same name to different concepts
+
 
 - TDD: add the simplest test, add the simplest solution, add the simplest test that can ruin the code
     - Fake it, Obvious implementation, Triangulate (add multiple tests, which should be passed by creating an abstraction)
@@ -92,12 +116,14 @@ I have been working with Object Oriented Programming for a couple of years. Duri
 - if writing tests are hard, it means coupling is thigh
 - for simple logic, we don't need direct tests (we should avoid echo chamber, tests closely resembling the original code, it creates a lock step change problem )
 - integration tests prove the correctness of the collaboration between a group of objects
-- integrationtests could masqurade as unittest if the tested class creates its own collaborators, does not use dependency injection, if it has its own story, it should have its own test
+- integration tests could masqurade as unittest if the tested class creates its own collaborators, does not use dependency injection, if it has its own story, it should have its own test
 - we can skip unit tests for small classes(integral part of another class, invisible from the outside), they should be exercised in integration tests for the other class
 - Dont put pattern names in the name of classes, concepts are important not the patterns
     - exception: if the pattern is intention revaling, we can include it (VerseFake, ApplicationController)
 -
     -
+- when creating public API-s, consider how much knowledge is needed to call a method (parameters)
+
 
 ## Resources
 - https://dev.37signals.com/series/code-i-like/
