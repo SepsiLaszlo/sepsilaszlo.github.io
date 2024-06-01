@@ -4,15 +4,12 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+I'm glad you found my blog!
 
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
+My name is László Sepsi, and I'm a Software Engineer from Hungary.
 
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
+I enthusiastically love the [Ruby](https://www.ruby-lang.org) programming language for its human-friendly syntax. I admire the [Ruby on Rails](https://rubyonrails.org) full-stack web application framework for making web application development a bliss, enabling programmers to ship features quickly.
 
+I'm also interested in DevOps, web application architectures, startup culture, and managing the software development lifecycle effectively.
 
-[jekyll-organization]: https://github.com/jekyll
+This blog is powered by [GitHub Pages](https://pages.github.com/), [Jekyll](https://jekyllrb.com/), and [Minima](https://github.com/jekyll/minima).
