@@ -13,7 +13,8 @@
 - Add performance testing, [evil-seed](https://github.com/evilmartians/evil-seed)
 - Micro services architecture
 - Thoughts on AWS complexity
+- handling callback, test object setup(factories)
+- handling transactions, locks between different services
 
 ## Todo 
-- update about
 - set up a new theme
