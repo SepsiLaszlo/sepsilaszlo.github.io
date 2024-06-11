@@ -60,6 +60,8 @@ As programmer I often find myself lost in the sea of options. Principles could b
 
 **S - Single-responsibility Principle**
 
+> A class should have one and only one reason to change. 
+
 Having multiple responsibilities complicates things. It makes a class's API larger, invites more dependencies and provides increases the possibility that we need to change the class in the future.
 
 **O - Open-closed Principle**
@@ -70,10 +72,42 @@ As OO programmers we like to reuse behaviour, it doesn't make much sense to re-c
 
 L - Liskov Substitution Principle
 
+> Let q(x) be a property provable about objects of x of type T. Then q(y) should be provable for objects y of type S where S is a subtype of T.
+
+The definition here is confusing. Putting it plainly, If we create a subclass, it should conform the same API as its parent, so they can be used interchangeably. Let's look at API's at a contract that gives guarantees to the the user of an abstraction. In this case, subclasses should respect the contracts of their parents. For example, the parent class could return a number from 1 to 100. This is its contract. Then our could subclass could return a number between 10 and 20 to keep the contract. This way the subclass is guaranteed to work in place of it's parent. But if the subclass breaks the contract and it returns a string, it probably would break the code that depended on it's parents.    
+
 
 I - Interface Segregation Principle
+
+> A client should never be forced to implement an interface that it doesn’t use, or clients shouldn’t be forced to depend on methods they do not use.
+
+We want to have as few dependency as possible in our application. If we keep interfaces focused on one behaviour, the users of the interfaces can choose the exact behaviour they need. No bloat added. You can also avoid situations where a piece of behavior changes, and breaks your code, but you don't even use that behaviour!
+
 D - Dependency Inversion Principle
 
+> Entities must depend on abstractions, not on concretions. It states that the high-level module must not depend on the low-level module, but they should depend on abstractions.
+
+It is rarely a good idea to depend on concrete classes. Especially for high level classes which often use multiple collaborator classes to implement a complex behaviour, for example _Payment_ in a webshop. Rather than instantiating an object from a PayPalPaymentProvider to complete the payment process, it is better to accept a parameter, that implements the PaymentProvider interface.
+
+
+- Liskov substition
+    - a class should be replacable by its subclasses (polymorphism)
+    - a Subclass respects the common API to achive this
+    - a class only know the interface, not the internals
+- ISOLATE THE BEHAVIOUR THAT VARIES
+- Law of Demeter (Principle of least knowledge)
+    - an object should not reach trough their collaborators, and poke in their implementation, neighbours
+    - tell dont ask, I tell you what I need (single method call), I don't ask (about your stuff and figure out what I
+      need)
+    - the collaborators mean a class (if each method in a chain retuns the same, it is okay, String, ActiveRecord, we
+      only interacted with one class)
+    - we can solve this with delagation, name the method what we want IN THE CONTEXT
+    - makes testing easier, we dont have to mock a function that returns a mock and so on, easier test setup
+    -
+- object creation should be moved to the edge of the app, down the stack, create it before
+- coperate at the middle ?
+- instance method should resist knowing concrete class names, expect factories
+-
 
 # Code smells
 
@@ -130,32 +164,7 @@ D - Dependency Inversion Principle
 - data clumps are data appearing together often, methods, variables etc..,
     - this indicates a missing concept, extract to methods or classes
 
-- Liskov substition
-    - a class should be replacable by its subclasses (polymorphism)
-    - a Subclass respects the common API to achive this
-    - a class only know the interface, not the internals
 
-- Dependency Inversion Principle
-    - we should depend on an abstraction (parameter objects instead of hardcoded )
-    - high level modules should not depend on low level modules (level is the abstractness, high level modules the top
-      level of the piramid, rearly change, users interact with this)
-    - abstaction should not depend on the details, details should depend on the abstraction
-        - high classes get the objects they collaborate with as parametes, and the pass argument to them as well ?
-        - a detail is chosen by the abstraction
-- ISOLATE THE BEHAVIOUR THAT VARIES
-- Law of Demeter (Principle of least knowledge)
-    - an object should not reach trough their collaborators, and poke in their implementation, neighbours
-    - tell dont ask, I tell you what I need (single method call), I don't ask (about your stuff and figure out what I
-      need)
-    - the collaborators mean a class (if each method in a chain retuns the same, it is okay, String, ActiveRecord, we
-      only interacted with one class)
-    - we can solve this with delagation, name the method what we want IN THE CONTEXT
-    - makes testing easier, we dont have to mock a function that returns a mock and so on, easier test setup
-    -
-- object creation should be moved to the edge of the app, down the stack, create it before
-- coperate at the middle ?
-- instance method should resist knowing concrete class names, expect factories
--
 - use wishful thinking, comment the code you wish you had and refactor until it works!
 -
 - tests are useful for explaining the domain, each class should have its own tests
