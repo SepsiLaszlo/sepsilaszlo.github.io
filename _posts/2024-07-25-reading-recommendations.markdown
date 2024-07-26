@@ -39,4 +39,7 @@ GitLab's handbook is a great resource for building large-scale Rails application
 
 Infinum's handbook gives practical tips for Rails developers.
 
----
+There are also some promising articles that I did not have time to read yet:
+
+- [Nile Blog - Transaction Isolation in Postgres, explained](https://www.thenile.dev/blog/transaction-isolation-postgres)
+- [Serializable Snapshot Isolation in PostgreSQL](https://users.cs.utah.edu/~pandey/courses/cs6530/fall23/papers/mvcc/p1850_danrkports_vldb2012.pdf)
