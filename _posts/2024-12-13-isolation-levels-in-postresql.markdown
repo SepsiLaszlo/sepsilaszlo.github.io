@@ -5,7 +5,7 @@ date: 2024-12-13 13:52:00 +0200
 categories: database
 ---
 
-> This post is based on [Chapter 13. Concurrency Control of the PostgreSQL Documentation](https://www.postgresql.org/docs/current/mvcc.html) and [Serializable Snapshot Isolation in PostgreSQL article](https://arxiv.org/pdf/1208.4179).
+> This post is based on [Chapter 13. Concurrency Control of the PostgreSQL Documentation](https://www.postgresql.org/docs/17/mvcc.html) and [Serializable Snapshot Isolation in PostgreSQL article](https://arxiv.org/pdf/1208.4179).
 
 Transaction isolation plays a key role in data consistency. Let's take a look at how PostgreSQL implements this feature.
 
@@ -70,3 +70,7 @@ This makes application development much easier since engineers don't have to wor
 ## Why is the Read Committed Isolation Level the Default for PostgreSQL?
 
 At first glance, it might seem unusual that the weakest isolation level is the default. One possible reason could be that this isolation level was implemented first, because it was the simplest. Another reason could be that stronger isolation levels may result in serialization errors, which can cause problems for applications that are not prepared to deal with these kinds of errors.
+
+## Which Transaction Isolation Level Should I Use?
+
+The [13.4. Data Consistency Checks at the Application Level](https://www.postgresql.org/docs/17/applevel-consistency.html) chapter of the PostgreSQL official documentation states that it is very difficult to enforce business rules regarding data integrity using Read Committed transactions. The documentation also states that integrity checks will not work correctly without locking using the Repeatable Read isolation level, due to read/write conflicts. **If we want to guarantee consistency without locking, we must use the Serializable isolation level.** When using Serializable isolation level we must make sure that all transactions are run using this isolation level because even ad-hoc nonserializable transactions can introduce inconsistencies to the system.
