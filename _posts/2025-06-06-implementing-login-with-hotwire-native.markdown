@@ -25,9 +25,28 @@ bin/dev
 
 Open [localhost:3000](http://localhost:3000), you should see the Rails welcome page.
 
-![welcom-rails](/images/implementing-login-with-hotwire-native/1-welcome-rails.png)
+![welcom-rails](/images/implementing-login-with-hotwire-native/1-rails-welcome.png)
 
-Yaay, we are on Rails! 
+Yaay, we are on Rails!
+
+## Scaffolding some views to work with
+
+Let's generate our one and only user resources.
+
+```sh
+rails g scaffold user
+```
+
+Then set the route route to `users#idex`.
+
+```rb
+# config/routes.rb
+root "users#index"
+```
+
+Open [localhost:3000](http://localhost:3000), you should see the index page for users.
+
+![welcom-rails](/images/implementing-login-with-hotwire-native/2-devise-login-page.png)
 
 ## Setting up devise
 
@@ -79,6 +98,5 @@ Open [localhost:3000/users/sign_in](http://localhost:3000/users/sign_in), you sh
 
 ![devise-login](/images/implementing-login-with-hotwire-native/2-devise-login-page.png)
 
-## Scaffolding some views to work with
 
 
